@@ -1,4 +1,6 @@
-﻿using HarmonyLib;
+﻿using BepInEx.Logging;
+using HarmonyLib;
+using HarmonyLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,12 +73,12 @@ namespace PatchingLib
 				bool enabled = !attributes.Any(attribute => !_patchRequirements.IsAllowed(attribute.requirement_name));
 				if (enabled)
 				{
-					ZLog.Log("Patching: " + type.ToString());
+					System.Console.WriteLine("Patching: " + type.ToString());
 					new PatchClassProcessor(harmony_instance, type).Patch();
 				}
 				else
 				{
-					ZLog.Log("Patch disabled: " + type.ToString());
+					System.Console.WriteLine("Patch disabled: " + type.ToString());
 				}
 			}
 		}
