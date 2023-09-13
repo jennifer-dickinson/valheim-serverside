@@ -73,12 +73,12 @@ namespace PatchingLib
 				bool enabled = !attributes.Any(attribute => !_patchRequirements.IsAllowed(attribute.requirement_name));
 				if (enabled)
 				{
-					System.Console.WriteLine("Patching: " + type.ToString());
+					ZLog.Log("Patching: " + type.ToString());
 					new PatchClassProcessor(harmony_instance, type).Patch();
 				}
 				else
 				{
-					System.Console.WriteLine("Patch disabled: " + type.ToString());
+					ZLog.Log("Patch disabled: " + type.ToString());
 				}
 			}
 		}
